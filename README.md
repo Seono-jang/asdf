@@ -29,6 +29,8 @@ If you run the program (`main.py`) without any modification to the code, it will
 ## 자동차공학전문대학원 자동차IT융합 전공 A2020043
 
 
+**Observer Model
+
     # Observation model (assuming independent Gaussian)
     def observation_model(landmarks, observations, pseudo_ranges, stdev):
         # Initialize the measurement's probability to one.
@@ -39,3 +41,23 @@ If you run the program (`main.py`) without any modification to the code, it will
                 distance_prob *= norm_pdf(observations[i],pseudo_ranges[i],1)
         else: 
             distance_prob = 0
+        return distance_prob
+
+
+
+
+** Motion Model
+
+
+    def motion_model(position, mov, priors, map_size, stdev):
+        # Initialize the position's probability to zero.
+        position_prob = 0.0
+        
+        for i in range(map_size):
+            position_prob += norm_pdf(position-i, mov ,stdev)*priors[i]
+            
+        
+        fx = []
+        
+        for i in range(map_size):
+            fx.append(norm_pdf(position-i, mov ,stdev)*priors[i])
