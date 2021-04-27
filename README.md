@@ -61,3 +61,10 @@ If you run the program (`main.py`) without any modification to the code, it will
         
         for i in range(map_size):
             fx.append(norm_pdf(position-i, mov ,stdev)*priors[i])
+
+
+\Delta s = s_G - s Δs=sG​−s : Longitudinal distance from destination;
+
+\Delta d = d_G - d_{LC/KL} Δd=dG​−dLC/KL​: The horizontal distance from the destination;
+
+\text{cost} = 1 - e^{- \frac{|\Delta d|}{\Delta s}} cost=1−e−Δs∣Δd∣
